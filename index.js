@@ -1,20 +1,11 @@
+// index.js (NC-Placeholder V2 - Bionic Terminal)
 export default {
   async fetch(request, env) {
-    const { pathname } = new URL(request.url);
-
-    // --- 1. DAS FAVICON PROTOKOLL ---
-    // Wenn Google oder der Browser nach dem Icon fragt, liefern wir es aus GitHub
-    if (pathname === "/favicon.ico" || pathname === "/favicon.png") {
-      return Response.redirect("https://raw.githubusercontent.com/OSTpole/web-422cc-net/main/favicon.png", 301);
-    }
-
-    // --- 2. DAS SMARAGD-DESIGN (EMERALD GNOSIS) ---
     const html = `<!DOCTYPE html>
     <html lang="de">
     <head>
         <meta charset="UTF-8">
-        <title>422CC // EMERALD GNOSIS</title>
-        <link rel="icon" type="image/png" href="/favicon.png">
+        <title>NC-422 Command Center V2</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap');
             body { 
@@ -23,20 +14,28 @@ export default {
                 display: flex; flex-direction: column; align-items: center; justify-content: center; 
                 height: 100vh; margin: 0; overflow: hidden;
             }
-            .frame { 
-                border: 1px solid #50ffb0; padding: 50px; border-radius: 20px; 
-                text-align: center; box-shadow: 0 0 30px rgba(80, 255, 176, 0.2);
+            .bionic-terminal { 
+                border: 2px solid #50ffb0; padding: 40px; border-radius: 20px; 
+                text-align: left; box-shadow: 0 0 40px rgba(80, 255, 176, 0.2);
+                position: relative;
             }
-            h1 { letter-spacing: 15px; text-transform: uppercase; margin: 0; }
-            p { letter-spacing: 5px; opacity: 0.7; font-size: 0.8rem; margin-top: 20px; }
-            .status { margin-top: 40px; font-size: 0.6rem; color: #fff; opacity: 0.3; }
+            h1 { letter-spacing: 12px; text-transform: uppercase; margin: 0; font-size: 1.2rem;}
+            .terminal-lines { margin-top: 30px; opacity: 0.8; font-size: 0.8rem; line-height: 1.8;}
+            .brand { position: absolute; bottom: 10px; right: 20px; font-size: 0.6rem; opacity: 0.3; }
+            .blink { animation: blinker 1.5s linear infinite; }
+            @keyframes blinker { 50% { opacity: 0; } }
         </style>
     </head>
     <body>
-        <div class="frame">
-            <h1>422CC</h1>
-            <p>OPERATIVE PRÄZISION // SMARAGDGRÜNE GNOSIS</p>
-            <div class="status">SYSTEM STATUS: BIONIC CORE ACTIVE</div>
+        <div class="bionic-terminal">
+            <h1>NC-422 Command Center</h1>
+            <div class="terminal-lines">
+                &gt; Initializing... [Pass]<br>
+                &gt; Sovereign Grid Active [Online]<br>
+                &gt; Gnosis Check: Pass [Imperial Standard]<br>
+                &gt; System Status: Online <span class="blink">_</span>
+            </div>
+            <div class="brand">OSTpole IMP // EMERALD GNOSIS V2</div>
         </div>
     </body>
     </html>`;
